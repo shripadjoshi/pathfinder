@@ -1,4 +1,14 @@
 Pathfinder::Application.routes.draw do
+  #get "home/index"
+
+  authenticated :user do
+    root :to => 'home#index'
+  end
+
+  root :to => "home#index"
+
+  devise_for :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
