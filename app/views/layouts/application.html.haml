@@ -6,4 +6,10 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
+    = flash[:message]
+    = flash[:notice]
+    = flash[:error]
+    = link_to "Register", new_user_registration_path
+    |
+    = link_to "Logout", destroy_user_session_path, :method => "delete"
     = yield
