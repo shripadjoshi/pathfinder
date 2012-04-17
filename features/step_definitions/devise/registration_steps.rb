@@ -18,3 +18,10 @@ When /^I press "([^"]*)"$/ do |button|
   click_button button
 end
 
+Then /^there is a user called "([^"]*)"$/ do |name|
+  FactoryGirl.create(:user, :name => name, :email => "shripad@gmail.com", :password => "shripad", :password_confirmation => "shripad")
+end
+
+Then /^there is a user email called "([^"]*)"$/ do |email|
+  FactoryGirl.create(:user, :name => "Shripad", :email => email, :password => "shripad", :password_confirmation => "shripad")
+end
