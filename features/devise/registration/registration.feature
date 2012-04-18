@@ -1,7 +1,7 @@
-Feature: Creating Projects
+Feature: Registration of user
  In order to login to pathfinder
  As a pathfinder enthusiastic
- I want to register
+ I want to register to pathfinder
 
 Background:
  Given I am on the homepage
