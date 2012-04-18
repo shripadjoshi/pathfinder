@@ -1,18 +1,27 @@
 !!!
 %html
   %head
-    %title Pathfinder
-    = stylesheet_link_tag    "application", :media => "all"
+    %title School
+    = stylesheet_link_tag  "reset", "fluid_grid", "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    = flash[:message]
-    = flash[:notice]
-    = flash[:error]
-    = flash[:warning]
-    = link_to "Register", new_user_registration_path
-    |
-    = link_to "Logout", destroy_user_session_path, :method => "delete"
-    |
-    = link_to "Login", new_user_session_path
-    = yield
+    .container_16.wrapper
+      .header.grid_16
+        = render 'shared/navigation'
+        .clear
+      %hr.menu-sep.grid_16/
+      - if user_signed_in?
+        .menu.grid_16
+          .grid_12.menu-bar
+            %ul
+              %li= link_to('Classrooms')
+              %li= link_to('Students')
+              %li= link_to('Teachers')
+      - if flash.present?
+        .flash_setup.grid_16
+          .grid_12
+            - flash.each do |name, msg|
+              = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+      .content.grid_16
+        = yield
